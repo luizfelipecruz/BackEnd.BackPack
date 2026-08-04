@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Base/">
+    <Project Path="BackEnd.BackPack.Aplication/BackEnd.BackPack.Aplication.csproj" />
+    <Project Path="BackEnd.BackPack.Domain/BackEnd.BackPack.Domain.csproj" />
+    <Project Path="BackEnd.BackPack.Infraestruture/BackEnd.BackPack.Infraestruture.csproj" />
+  </Folder>
+  <Folder Name="/Presentations/">
+    <Project Path="BackEnd.BackPack.API/BackEnd.BackPack.API.csproj" />
+  </Folder>
+</Solution>
