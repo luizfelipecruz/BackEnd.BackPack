@@ -4,6 +4,9 @@
     <Project Path="BackEnd.BackPack.Domain/BackEnd.BackPack.Domain.csproj" />
     <Project Path="BackEnd.BackPack.Infraestruture/BackEnd.BackPack.Infraestruture.csproj" />
   </Folder>
+  <Folder Name="/Mediator/">
+    <Project Path="Mediator/Mediator.csproj" Id="b93dac6e-8e25-467a-b515-183c1780c04a" />
+  </Folder>
   <Folder Name="/Presentations/">
     <Project Path="BackEnd.BackPack.API/BackEnd.BackPack.API.csproj" />
   </Folder>

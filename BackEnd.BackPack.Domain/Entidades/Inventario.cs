@@ -1,9 +1,9 @@
 ﻿namespace BackEnd.BackPack.Domain.Entidades;
 
-public class Inventario : EntidadeAuxiliar
+public class Inventario : EntidadeBase
 {
-    public int IdPersonagem { get; set; }
-    public int IdItem { get; set; }
+    public Guid IdPersonagem { get; set; }
+    public Guid IdItem { get; set; }
     public int Quantidade { get; set; }
     public bool Equipado { get; set; }
     public decimal DurabilidadeAtual { get; set; }
