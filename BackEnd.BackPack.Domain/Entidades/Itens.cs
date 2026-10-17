@@ -6,6 +6,7 @@ public class Itens : EntidadeCompleta
 {
     public decimal Peso { get; set; }
     public decimal Durabilidade { get; set; }
+    public decimal Tamanho { get; set; }
     public decimal Dureza { get; set; }
     public EnumRaridade Raridade { get; set; }
     public EnumTipoItem Tipo { get; set; }

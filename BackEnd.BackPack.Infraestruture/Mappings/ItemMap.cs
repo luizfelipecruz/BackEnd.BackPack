@@ -13,6 +13,7 @@ internal class ItemMap : IEntityTypeConfiguration<Itens>
         builder.Property(x => x.Raridade).IsRequired();
         builder.Property(x => x.Dureza).IsRequired();
         builder.Property(x => x.Durabilidade).IsRequired();
+        builder.Property(x => x.Tamanho).IsRequired();
 
         builder.HasMany(x => x.Inventarios)
                .WithOne(x => x.Item)
