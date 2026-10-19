@@ -1,10 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
-
-
-namespace BackEnd.BackPack.Domain.Repositories;
+﻿namespace BackEnd.BackPack.Domain.Repositories;
 
 public interface IUnitOfWork : IDisposable
 {
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
-    Task<IDbContextTransaction> BeginTransaction();
+    //Task<IDbContextTransaction> BeginTransaction();
 }

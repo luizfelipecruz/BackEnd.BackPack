@@ -13,10 +13,12 @@ internal class LocalMap : IEntityTypeConfiguration<Local>
 
         builder.HasOne(x => x.Historia)
                .WithMany(x => x.Locais)
-               .HasForeignKey(x => x.IdHistoria);
+               .HasForeignKey(x => x.IdHistoria)
+               .OnDelete(DeleteBehavior.NoAction);
 
         builder.HasMany(x => x.Personagens)
                .WithOne(x => x.Local)
-               .HasForeignKey(x => x.IdLocal);
+               .HasForeignKey(x => x.IdLocal)
+               .OnDelete(DeleteBehavior.NoAction);
     }
 }

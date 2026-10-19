@@ -1,5 +1,7 @@
 ﻿namespace BackEnd.BackPack.Aplication.Commands.Login;
 
-public class LoginCommandRequest
+public record LoginCommandRequest
 {
+    public string Login { get; set; }
+    public string Senha { get; set; }
 }

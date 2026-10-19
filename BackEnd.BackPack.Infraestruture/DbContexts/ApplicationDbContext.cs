@@ -1,4 +1,5 @@
-﻿using BackEnd.BackPack.Infraestruture.Mappings;
+﻿using BackEnd.BackPack.Domain.Entidades;
+using BackEnd.BackPack.Infraestruture.Mappings;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -6,7 +7,7 @@ using System.Data;
 
 namespace BackEnd.BackPack.Infraestruture.DbContexts;
 
-public class ApplicationDbContext : IdentityDbContext<IdentityUser<int>, IdentityRole<int>, int>, IApplicationDbContext
+public class ApplicationDbContext : IdentityDbContext<Usuario, IdentityRole<Guid>, Guid>, IApplicationDbContext
 {
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)

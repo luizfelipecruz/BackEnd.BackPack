@@ -1,11 +1,12 @@
-﻿namespace BackEnd.BackPack.Domain.Entidades;
+﻿using Microsoft.AspNetCore.Identity;
 
-public class Usuario : EntidadeBase
+namespace BackEnd.BackPack.Domain.Entidades;
+
+public class Usuario : IdentityUser<Guid>
 {
-    public string Login { get; set; }
-    public string Senha { get; set; }
-    public int? Tipo { get; set; }
-
     public virtual ICollection<Personagem> Personagems { get; set; }
+        = new List<Personagem>();
+
     public virtual ICollection<UsuarioHistoria> Historias { get; set; }
+        = new List<UsuarioHistoria>();
 }

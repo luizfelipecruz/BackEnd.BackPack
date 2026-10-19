@@ -8,12 +8,9 @@ internal class UsuarioMap : IEntityTypeConfiguration<Usuario>
 {
     public void Configure(EntityTypeBuilder<Usuario> builder)
     {
-        builder.Property(x => x.Login).IsRequired().HasMaxLength(50);
-        builder.Property(x => x.Senha).IsRequired().HasMaxLength(100);
-        builder.Property(x => x.Tipo).IsRequired();
-
         builder.HasMany(x => x.Personagems)
                .WithOne(x => x.Usuario)
-               .HasForeignKey(x => x.IdUsuario);
+               .HasForeignKey(x => x.IdUsuario)
+               .OnDelete(DeleteBehavior.NoAction);
     }
 }
