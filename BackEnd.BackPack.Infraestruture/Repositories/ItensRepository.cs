@@ -4,7 +4,7 @@ using BackEnd.BackPack.Infraestruture.DbContexts;
 
 namespace BackEnd.BackPack.Infraestruture.Repositories;
 
-public class ItensRepository : RepositoryAsync<Itens>, IItensRepository
+public class ItensRepository : RepositoryAsync<Item>, IItensRepository
 {
     public ItensRepository(ApplicationDbContext dbContext) : base(dbContext)
     {

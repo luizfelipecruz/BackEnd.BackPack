@@ -2,7 +2,7 @@
 
 namespace BackEnd.BackPack.Domain.Entidades;
 
-public class Itens : EntidadeCompleta
+public class Item : EntidadeCompleta
 {
     public decimal Peso { get; set; }
     public decimal Durabilidade { get; set; }
