@@ -4,8 +4,10 @@ using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllers();
 
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 builder.Services.AddOpenApi();
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddRepositories();
@@ -18,12 +20,18 @@ builder.Services.AddApplicationLayer();
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
-    app.MapOpenApi();
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
 await CreateRoles(app.Services);
+
 app.Run();
 
 
