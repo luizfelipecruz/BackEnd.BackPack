@@ -13,10 +13,12 @@ internal class HistoriaMap : IEntityTypeConfiguration<Historia>
 
         builder.HasMany(x => x.Usuarios)
                .WithOne(x => x.Historia)
-               .HasForeignKey(x => x.IdHistoria);
+               .HasForeignKey(x => x.IdHistoria)
+               .OnDelete(DeleteBehavior.NoAction);
 
         builder.HasMany(x => x.Personagens)
                .WithOne(x => x.Historia)
-               .HasForeignKey(x => x.IdHistoria);
+               .HasForeignKey(x => x.IdHistoria)
+               .OnDelete(DeleteBehavior.NoAction);
     }
 }

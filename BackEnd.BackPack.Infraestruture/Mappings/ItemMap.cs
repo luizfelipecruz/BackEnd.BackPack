@@ -17,6 +17,7 @@ internal class ItemMap : IEntityTypeConfiguration<Itens>
 
         builder.HasMany(x => x.Inventarios)
                .WithOne(x => x.Item)
-               .HasForeignKey(x => x.IdItem);
+               .HasForeignKey(x => x.IdItem)
+               .OnDelete(DeleteBehavior.NoAction);
     }
 }

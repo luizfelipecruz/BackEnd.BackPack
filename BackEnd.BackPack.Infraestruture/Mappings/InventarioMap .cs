@@ -18,10 +18,12 @@ internal class InventarioMap : IEntityTypeConfiguration<Inventario>
 
         builder.HasOne(x => x.Personagem)
                .WithMany(x => x.ItensInventario)
-               .HasForeignKey(x => x.IdPersonagem);
+               .HasForeignKey(x => x.IdPersonagem)
+               .OnDelete(DeleteBehavior.NoAction);
 
         builder.HasOne(x => x.Item)
                .WithMany(x => x.Inventarios)
-               .HasForeignKey(x => x.IdItem);
+               .HasForeignKey(x => x.IdItem)
+               .OnDelete(DeleteBehavior.NoAction);
     }
 }

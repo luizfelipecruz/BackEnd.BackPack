@@ -7,7 +7,7 @@ namespace BackEnd.BackPack.Infraestruture.Repositories;
 public class UnitOfWork : IUnitOfWork
 {
     private readonly ApplicationDbContext _dbContext;
-    private IDbContextTransaction _transaction;
+    //private IDbContextTransaction _transaction;
     private bool disposed;
 
     public UnitOfWork(ApplicationDbContext dbContext)
@@ -37,9 +37,9 @@ public class UnitOfWork : IUnitOfWork
         disposed = true;
     }
 
-    public async Task<IDbContextTransaction> BeginTransaction()
-    {
-        _transaction = await _dbContext.Database.BeginTransactionAsync();
-        return _transaction;
-    }
+    //public async Task<IDbContextTransaction> BeginTransaction()
+    //{
+    //    _transaction = await _dbContext.Database.BeginTransactionAsync();
+    //    return _transaction;
+    //}
 }
