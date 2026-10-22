@@ -35,9 +35,8 @@ public class CriarItemComandHandler(IItensRepository ItensRepository, IUnitOfWor
 
         await ItensRepository.AddAsync(item); 
         await UnitOfWork.SaveChangesAsync();
-        //Await é a forma do sistema esperar a execução de uma tarefa assíncrona, sem bloquear a thread principal
-
-
-        throw new NotImplementedException();
+        //Await é a forma do sistema esperar a execução de uma tarefa assíncrona, sem bloquea
+        //a thread principal.
+        return Result<CriarItemCommandResponse>.Success(new CriarItemCommandResponse(item){ },"Item criado com sucesso");
     }
 }
