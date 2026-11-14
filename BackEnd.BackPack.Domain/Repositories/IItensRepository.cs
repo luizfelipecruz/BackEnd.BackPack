@@ -2,7 +2,7 @@
 
 namespace BackEnd.BackPack.Domain.Repositories;
 
-public interface IItensRepository : IRepositoryAsync<Itens>
+public interface IItensRepository : IRepositoryAsync<Item>
 {
 
 }

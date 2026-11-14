@@ -4,15 +4,16 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BackEnd.BackPack.Infraestruture.Mappings;
 
-internal class ItemMap : IEntityTypeConfiguration<Itens>
+internal class ItemMap : IEntityTypeConfiguration<Item>
 {
-    public void Configure(EntityTypeBuilder<Itens> builder)
+    public void Configure(EntityTypeBuilder<Item> builder)
     {
         builder.Property(x => x.Peso).IsRequired();
         builder.Property(x => x.Tipo).IsRequired();
         builder.Property(x => x.Raridade).IsRequired();
         builder.Property(x => x.Dureza).IsRequired();
         builder.Property(x => x.Durabilidade).IsRequired();
+        builder.Property(x => x.Tamanho).IsRequired();
 
         builder.HasMany(x => x.Inventarios)
                .WithOne(x => x.Item)

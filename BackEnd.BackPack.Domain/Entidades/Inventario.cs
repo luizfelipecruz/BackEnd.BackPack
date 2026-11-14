@@ -8,6 +8,6 @@ public class Inventario : EntidadeBase
     public bool Equipado { get; set; }
     public decimal DurabilidadeAtual { get; set; }
 
-    public virtual Itens Item { get; set; }
+    public virtual Item Item { get; set; }
     public virtual Personagem Personagem { get; set; }
 }
