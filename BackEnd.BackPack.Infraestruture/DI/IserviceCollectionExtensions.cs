@@ -1,8 +1,10 @@
-﻿using BackEnd.BackPack.Domain.Entidades;
+﻿using BackEnd.BackPack.Aplication.Services;
+using BackEnd.BackPack.Domain.Entidades;
 using BackEnd.BackPack.Domain.Repositories;
 using BackEnd.BackPack.Infraestruture.DbContexts;
 using BackEnd.BackPack.Infraestruture.Repositories;
 using BackEnd.BackPack.Infraestruture.Roles;
+using BackEnd.BackPack.Infraestruture.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -26,8 +28,11 @@ public static class IserviceCollectionExtensions
         services.AddScoped<IPersonagemRepository, PersonagemRepository>();
         services.AddScoped<IInventarioRepository, InventarioRepository>();
         services.AddScoped<IUsuarioHistoriaRepository, UsuarioHistoriaRepository>();
+        services.AddScoped<IAuthHelper, AuthHelper>();
         return services;
     }
+
+
 
     public static IServiceCollection AddInfrastructure(
     this IServiceCollection services,

@@ -43,4 +43,6 @@ public class RepositoryAsync<T> : IRepositoryAsync<T> where T : class
         _dbContext.Update(entity);
         return Task.CompletedTask;
     }
+    public async ValueTask<bool> AnyByIdAsync(Guid id)
+    => await _dbContext.Set<T>().FindAsync(id) is not null;
 }

@@ -1,5 +1,4 @@
-﻿using BackEnd.BackPack.Aplication.Commands.Authorize;
-using BackEnd.BackPack.Domain.Entidades;
+﻿using BackEnd.BackPack.Domain.Entidades;
 
 namespace BackEnd.BackPack.Aplication.Services;
 

@@ -1,3 +1,5 @@
+using BackEnd.BackPack.API.Middlewares;
+using BackEnd.BackPack.Aplication.DI;
 using BackEnd.BackPack.Infraestruture.DI;
 using BackEnd.BackPack.Infraestruture.Roles;
 using Microsoft.AspNetCore.Identity;
@@ -13,9 +15,8 @@ builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddRepositories();
 builder.Services.AddIdentity(builder.Configuration);
 
+
 builder.Services.AddApplicationLayer();
-
-
 
 var app = builder.Build();
 
@@ -25,6 +26,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseAuthentication();
 app.UseAuthorization();
 

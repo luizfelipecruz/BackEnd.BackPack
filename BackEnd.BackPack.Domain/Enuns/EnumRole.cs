@@ -11,5 +11,5 @@ public enum EnumRole
     Mestre = 2,
 
     [Description("Observador")]
-    Observador = 3
+    Observador = 3,
 }

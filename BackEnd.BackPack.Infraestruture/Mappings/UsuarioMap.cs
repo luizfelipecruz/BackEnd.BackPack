@@ -8,6 +8,9 @@ internal class UsuarioMap : IEntityTypeConfiguration<Usuario>
 {
     public void Configure(EntityTypeBuilder<Usuario> builder)
     {
+        builder.Property(x => x.Admin).IsRequired()
+                                      .HasDefaultValue(false);
+
         builder.HasMany(x => x.Personagems)
                .WithOne(x => x.Usuario)
                .HasForeignKey(x => x.IdUsuario)

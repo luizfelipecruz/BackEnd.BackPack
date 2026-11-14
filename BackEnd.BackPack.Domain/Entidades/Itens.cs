@@ -9,5 +9,7 @@ public class Itens : EntidadeCompleta
     public decimal Dureza { get; set; }
     public EnumRaridade Raridade { get; set; }
     public EnumTipoItem Tipo { get; set; }
+    public Guid? IdHistoria { get; set; }
+    public virtual Historia Historia { get; set; }
     public virtual ICollection<Inventario> Inventarios { get; set; }
 }

@@ -3,6 +3,7 @@
 public interface IRepositoryAsync<T> where T : class
 {
     ValueTask<T> GetByIdAsync(Guid id);
+    ValueTask<bool> AnyByIdAsync(Guid id);
 
     Task<IEnumerable<T>> GetAllAsync();
 

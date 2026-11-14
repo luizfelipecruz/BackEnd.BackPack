@@ -1,4 +1,4 @@
-﻿namespace BackEnd.BackPack.Aplication.Commands.Login;
+﻿namespace BackEnd.BackPack.Aplication.Commands.Authorize.Login;
 
 public record LoginCommandRequest
 {

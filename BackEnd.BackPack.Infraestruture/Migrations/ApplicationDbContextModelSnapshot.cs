@@ -17,7 +17,7 @@ namespace BackEnd.BackPack.Infraestruture.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.13")
+                .HasAnnotation("ProductVersion", "10.0.14")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -30,9 +30,6 @@ namespace BackEnd.BackPack.Infraestruture.Migrations
 
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("IdMestre")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
@@ -97,6 +94,9 @@ namespace BackEnd.BackPack.Infraestruture.Migrations
                     b.Property<decimal>("Dureza")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<Guid?>("IdHistoria")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
 
@@ -110,6 +110,8 @@ namespace BackEnd.BackPack.Infraestruture.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdHistoria");
 
                     b.ToTable("Itens");
                 });
@@ -194,6 +196,11 @@ namespace BackEnd.BackPack.Infraestruture.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
+
+                    b.Property<bool>("Admin")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -426,6 +433,16 @@ namespace BackEnd.BackPack.Infraestruture.Migrations
                     b.Navigation("Personagem");
                 });
 
+            modelBuilder.Entity("BackEnd.BackPack.Domain.Entidades.Itens", b =>
+                {
+                    b.HasOne("BackEnd.BackPack.Domain.Entidades.Historia", "Historia")
+                        .WithMany("Itens")
+                        .HasForeignKey("IdHistoria")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.Navigation("Historia");
+                });
+
             modelBuilder.Entity("BackEnd.BackPack.Domain.Entidades.Local", b =>
                 {
                     b.HasOne("BackEnd.BackPack.Domain.Entidades.Historia", "Historia")
@@ -536,6 +553,8 @@ namespace BackEnd.BackPack.Infraestruture.Migrations
 
             modelBuilder.Entity("BackEnd.BackPack.Domain.Entidades.Historia", b =>
                 {
+                    b.Navigation("Itens");
+
                     b.Navigation("Locais");
 
                     b.Navigation("Personagens");

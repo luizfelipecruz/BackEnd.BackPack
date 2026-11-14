@@ -1,7 +1,7 @@
 ﻿using MediatR.ServiceCollectionExtensions;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BackEnd.BackPack.Infraestruture.DI;
+namespace BackEnd.BackPack.Aplication.DI;
 
 public static class IServiceCollectionExtensions
 {

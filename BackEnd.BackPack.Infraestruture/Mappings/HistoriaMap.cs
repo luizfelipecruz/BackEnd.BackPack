@@ -8,7 +8,6 @@ internal class HistoriaMap : IEntityTypeConfiguration<Historia>
 {
     public void Configure(EntityTypeBuilder<Historia> builder)
     {
-        builder.Property(x => x.IdMestre).IsRequired();
         builder.Property(x => x.StatusHistoria).IsRequired();
 
         builder.HasMany(x => x.Usuarios)

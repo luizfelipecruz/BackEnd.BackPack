@@ -1,4 +1,7 @@
-﻿namespace BackEnd.BackPack.Aplication.Extesnions;
+﻿using BackEnd.BackPack.Domain.Entidades;
+using Microsoft.AspNetCore.Identity;
+
+namespace BackEnd.BackPack.Aplication.Extesnions;
 
 public static class ValidationsHelper
 {
@@ -48,4 +51,13 @@ public static class ValidationsHelper
 
     public static string Base64Invalid()
         => "Arquivo deve estar em formato Base 64 e menor que 5 mega bytes";
+
+    public static bool IsValidPassword(this Usuario usuario, string password)
+    {
+        var passwordHasher = new PasswordHasher<Usuario>();
+
+        var hash = passwordHasher.VerifyHashedPassword(usuario, usuario.PasswordHash, password);
+
+        return hash == PasswordVerificationResult.Success;
+    }
 }

@@ -1,4 +1,4 @@
-﻿using BackEnd.BackPack.Aplication.Commands.Authorize;
+﻿using BackEnd.BackPack.Domain.Entidades;
 using BackEnd.BackPack.Domain.Extensions;
 using MediatR.Interfaces;
 using Microsoft.AspNetCore.Mvc;
