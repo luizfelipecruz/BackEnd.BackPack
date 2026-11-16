@@ -1,5 +1,4 @@
-﻿using BackEnd.BackPack.Domain.Entidades;
-using BackEnd.BackPack.Domain.Extensions;
+﻿using BackEnd.BackPack.Domain.Extensions;
 using MediatR.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,7 +13,7 @@ public class ManutencaoController : BaseApiController<ManutencaoController>
     {
     }
 
-    [HttpGet("Health")]
-    public async Task<ActionResult<Result<UsuarioToken>>> Health()
+    [HttpGet("health")]
+    public async Task<ActionResult<Result>> Health()
       => Ok("O bagulho tá rodando!");
 }

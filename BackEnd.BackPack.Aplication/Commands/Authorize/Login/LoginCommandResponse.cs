@@ -1,4 +1,4 @@
-﻿using BackEnd.BackPack.Domain.Entidades;
+﻿using BackEnd.BackPack.Aplication.DTOs;
 
 namespace BackEnd.BackPack.Aplication.Commands.Authorize.Login;
 

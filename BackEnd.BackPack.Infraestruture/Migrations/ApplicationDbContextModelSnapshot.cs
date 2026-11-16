@@ -79,7 +79,7 @@ namespace BackEnd.BackPack.Infraestruture.Migrations
                         });
                 });
 
-            modelBuilder.Entity("BackEnd.BackPack.Domain.Entidades.Itens", b =>
+            modelBuilder.Entity("BackEnd.BackPack.Domain.Entidades.Item", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -106,6 +106,9 @@ namespace BackEnd.BackPack.Infraestruture.Migrations
                     b.Property<int>("Raridade")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("Tamanho")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<int>("Tipo")
                         .HasColumnType("int");
 
@@ -113,7 +116,7 @@ namespace BackEnd.BackPack.Infraestruture.Migrations
 
                     b.HasIndex("IdHistoria");
 
-                    b.ToTable("Itens");
+                    b.ToTable("Item");
                 });
 
             modelBuilder.Entity("BackEnd.BackPack.Domain.Entidades.Local", b =>
@@ -416,7 +419,7 @@ namespace BackEnd.BackPack.Infraestruture.Migrations
 
             modelBuilder.Entity("BackEnd.BackPack.Domain.Entidades.Inventario", b =>
                 {
-                    b.HasOne("BackEnd.BackPack.Domain.Entidades.Itens", "Item")
+                    b.HasOne("BackEnd.BackPack.Domain.Entidades.Item", "Item")
                         .WithMany("Inventarios")
                         .HasForeignKey("IdItem")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -433,7 +436,7 @@ namespace BackEnd.BackPack.Infraestruture.Migrations
                     b.Navigation("Personagem");
                 });
 
-            modelBuilder.Entity("BackEnd.BackPack.Domain.Entidades.Itens", b =>
+            modelBuilder.Entity("BackEnd.BackPack.Domain.Entidades.Item", b =>
                 {
                     b.HasOne("BackEnd.BackPack.Domain.Entidades.Historia", "Historia")
                         .WithMany("Itens")
@@ -562,7 +565,7 @@ namespace BackEnd.BackPack.Infraestruture.Migrations
                     b.Navigation("Usuarios");
                 });
 
-            modelBuilder.Entity("BackEnd.BackPack.Domain.Entidades.Itens", b =>
+            modelBuilder.Entity("BackEnd.BackPack.Domain.Entidades.Item", b =>
                 {
                     b.Navigation("Inventarios");
                 });

@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BackEnd.BackPack.API.Controllers;
 
+[Route("[controller]")]
+
 public class HistoriasController : BaseApiController<HistoriasController>
 {
     public HistoriasController(IMediator mediator, ILogger<HistoriasController> logger) : base(mediator, logger)

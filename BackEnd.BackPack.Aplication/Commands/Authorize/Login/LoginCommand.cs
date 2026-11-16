@@ -1,4 +1,5 @@
-﻿using BackEnd.BackPack.Aplication.Exeptions;
+﻿using BackEnd.BackPack.Aplication.DTOs;
+using BackEnd.BackPack.Aplication.Exeptions;
 using BackEnd.BackPack.Aplication.Extesnions;
 using BackEnd.BackPack.Aplication.Services;
 using BackEnd.BackPack.Domain.Extensions;
@@ -25,7 +26,13 @@ public class LoginCommandHandler(IUsuarioRepository usuarioRepository, IAuthHelp
             await unitOfWork.SaveChangesAsync();
             throw new ApiException($"Senha incorreta {5 - usuario.AccessFailedCount} tentativa(s) restante(s).");
         }
-        var token = await authHelper.GenerateToken(usuario);
+        UsuarioClaims usuarioClaims = new()
+        {
+            IdUsuario = usuario.Id,
+            Admin = usuario.Admin
+        };
+
+        var token = await authHelper.GenerateToken(usuarioClaims);
 
         usuario.AccessFailedCount = 0;
         await usuarioRepository.UpdateAsync(usuario);

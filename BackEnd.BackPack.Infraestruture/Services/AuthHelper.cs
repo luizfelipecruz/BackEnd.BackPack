@@ -1,14 +1,13 @@
-﻿using BackEnd.BackPack.Aplication.Extesnions;
+﻿using BackEnd.BackPack.Aplication.DTOs;
+using BackEnd.BackPack.Aplication.Exeptions;
+using BackEnd.BackPack.Aplication.Extesnions;
 using BackEnd.BackPack.Aplication.Services;
-using BackEnd.BackPack.Domain.Entidades;
-using BackEnd.BackPack.Domain.Enuns;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using static BackEnd.BackPack.Aplication.Extesnions.IntExtensions;
 
 namespace BackEnd.BackPack.Infraestruture.Services;
 
@@ -24,48 +23,70 @@ public class AuthHelper : IAuthHelper
         _roleManager = roleManager;
     }
 
-    public async Task<UsuarioToken> GenerateToken(Usuario usuario)
+    public async Task<UsuarioToken> GenerateToken(UsuarioClaims usuario)
     {
-        var usuarioHistoria = usuario.Historias.FirstOrDefault();
+        var claims = new List<Claim>
+    {
+        new("IdUsuario", usuario.IdUsuario.ToString()),
+        new("Admin", usuario.Admin.ToString())
+    };
 
-        var claims = new List<Claim>()
+        // Valida se o contexto da história está completo
+        if (usuario.IdHistoria.HasValue != !usuario.Role.IsNullOrEmpty())
+            throw new ApiException("IdHistoria e Role devem ser informados juntos.");
+
+        // Adiciona contexto da história
+        if (usuario.IdHistoria.HasValue)
         {
-            new("IdUsuario", usuario.Id.ToString())
-        };
+            claims.Add(new Claim(
+                "IdHistoria",
+                usuario.IdHistoria.Value.ToString()
+            ));
 
-        if (usuarioHistoria != null)
-        {
-            var enumName = ((int)usuarioHistoria.EnumRole).GetEnumDescription<EnumRole>();
-
-            // Busca a Role no Identity
-            var role = await _roleManager.FindByNameAsync(enumName);
+            var role = await _roleManager.FindByNameAsync(usuario.Role!);
 
             if (role == null)
-                throw new Exception($"Role '{enumName}' não encontrada.");
+                throw new InvalidOperationException("Role não encontrada.");
 
-            // Busca as claims adicionais da Role
+            claims.Add(new Claim(ClaimTypes.Role, role.Name!));
+
+            // Recupera Claims adicionais associados à Role
             var roleClaims = await _roleManager.GetClaimsAsync(role);
 
+            // Evita duplicidade e conflitos com Claims reservados
+            var reservedClaims = new[]
+            {
+            "IdUsuario",
+            "IdHistoria",
+            "Admin",
+            ClaimTypes.Role
+        };
 
-            // Adiciona as claims configuradas na Role
-            claims.Add(new Claim("IdHistoria", usuarioHistoria.IdHistoria.ToString()));
-            claims.Add(new Claim(ClaimTypes.Role, enumName));
-
-            claims.AddRange(roleClaims);
+            foreach (var claim in roleClaims)
+            {
+                if (!reservedClaims.Contains(claim.Type) &&
+                    !claims.Any(c => c.Type == claim.Type && c.Value == claim.Value))
+                {
+                    claims.Add(claim);
+                }
+            }
         }
 
-        // Chave utilizada para assinar o JWT
         var key = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(_configuration["Jwt:key"]!));
+            Encoding.UTF8.GetBytes(_configuration["Jwt:key"]!)
+        );
 
-        var credenciais = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        var credenciais = new SigningCredentials(
+            key,
+            SecurityAlgorithms.HmacSha256
+        );
 
-        // Tempo de expiração
-        var expiracao = double.Parse(_configuration["TokenConfiguration:ExpireHours"]!);
+        var expiracao = double.Parse(
+            _configuration["TokenConfiguration:ExpireHours"]!
+        );
 
         var expiration = DateTime.UtcNow.AddHours(expiracao);
 
-        // Cria o token
         var token = new JwtSecurityToken(
             issuer: _configuration["TokenConfiguration:Issuer"],
             audience: _configuration["TokenConfiguration:Audience"],
@@ -74,7 +95,6 @@ public class AuthHelper : IAuthHelper
             signingCredentials: credenciais
         );
 
-        // Retorna o token
         return new UsuarioToken
         {
             Authenticated = true,
@@ -82,4 +102,5 @@ public class AuthHelper : IAuthHelper
             Expiration = expiration
         };
     }
+
 }
