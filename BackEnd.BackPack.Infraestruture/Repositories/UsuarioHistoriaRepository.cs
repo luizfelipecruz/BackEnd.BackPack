@@ -22,6 +22,7 @@ public class UsuarioHistoriaRepository : RepositoryAsync<UsuarioHistoria>, IUsua
 
     public async Task<UsuarioHistoria?> GetByIdUsuarioAsync(Guid idUsuario, Guid idHistoria)
         => await Query()
+                .Include(x => x.Historia)
                 .FirstOrDefaultAsync(x => x.IdUsuario.Equals(idUsuario)
                                        && x.IdHistoria.Equals(idHistoria));
 

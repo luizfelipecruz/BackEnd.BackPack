@@ -4,13 +4,30 @@ using BackEnd.BackPack.Infraestruture.DI;
 using BackEnd.BackPack.Infraestruture.Extensions;
 using BackEnd.BackPack.Infraestruture.Roles;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.OpenApi;
 using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "Insira seu token JWT."
+    });
+
+    options.AddSecurityRequirement(document => new OpenApiSecurityRequirement
+    {
+        [new OpenApiSecuritySchemeReference("Bearer", document)] = []
+    });
+});
 builder.Services.AddOpenApi();
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddRepositories();
@@ -18,6 +35,8 @@ builder.Services.AddIdentity(builder.Configuration);
 
 
 builder.Services.AddApplicationLayer();
+
+
 
 var app = builder.Build();
 

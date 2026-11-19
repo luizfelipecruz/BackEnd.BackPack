@@ -2,6 +2,7 @@
 using BackEnd.BackPack.Aplication.Commands.Historias.Criar_Historia;
 using BackEnd.BackPack.Domain.Extensions;
 using MediatR.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackEnd.BackPack.API.Controllers;
@@ -14,6 +15,7 @@ public class HistoriasController : BaseApiController<HistoriasController>
     {
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult<Result<CriarHistoriaCommandResponse>>> CriarHistoria([FromBody] CriarHistoriaCommandRequest request)
     {
@@ -22,8 +24,9 @@ public class HistoriasController : BaseApiController<HistoriasController>
         return Ok(result);
     }
 
+    [Authorize]
     [HttpPost("AdicionarParticipante")]
-    public async Task<ActionResult<Result<AdicionarParticipanteCommandResponse>>> AdicionarParticipante([FromBody] AdicionarParticipanteRequest request)
+    public async Task<ActionResult<Result<AdicionarParticipanteResponse>>> AdicionarParticipante([FromBody] AdicionarParticipanteRequest request)
     {
         var command = new AdicionarParticipanteCommand(request);
         var result = await Mediator.Send(command);

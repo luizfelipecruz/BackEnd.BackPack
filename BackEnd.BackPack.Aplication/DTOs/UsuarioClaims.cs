@@ -1,4 +1,4 @@
-﻿namespace BackEnd.BackPack.Aplication.DTOs  ;
+﻿namespace BackEnd.BackPack.Aplication.DTOs;
 
 public class UsuarioClaims
 {

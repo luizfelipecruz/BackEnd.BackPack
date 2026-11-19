@@ -2,6 +2,7 @@
 using BackEnd.BackPack.Aplication.Commands.Usuarios.CriarUsuario;
 using BackEnd.BackPack.Domain.Extensions;
 using MediatR.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackEnd.BackPack.API.Controllers;
@@ -15,6 +16,7 @@ public class UsuarioController : BaseApiController<UsuarioController>
     {
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult<Result<CriarUsuarioCommandResponse>>> CriarUsuario([FromBody] CriarUsuarioCommandRequest request)
     {
@@ -23,6 +25,7 @@ public class UsuarioController : BaseApiController<UsuarioController>
         return Ok(result);
     }
 
+    [Authorize]
     [HttpPatch("{id}")]
     public async Task<ActionResult<Result<AtualizarUsuarioCommandResponse>>> AtualizarUsuario([FromRoute] Guid id, [FromBody] AtualizarUsuarioCommandRequest request)
     {

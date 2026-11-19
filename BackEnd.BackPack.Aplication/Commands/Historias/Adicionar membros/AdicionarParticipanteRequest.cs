@@ -2,7 +2,7 @@
 
 namespace BackEnd.BackPack.Aplication.Commands.Historias.Adicionar_membros;
 
-public class AdicionarParticipanteRequest
+public record AdicionarParticipanteRequest
 {
     public Guid IdUsuario { get; set; }
     public Guid IdHistoria { get; set; }
