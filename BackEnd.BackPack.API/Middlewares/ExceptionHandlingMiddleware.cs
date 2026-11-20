@@ -1,4 +1,4 @@
-﻿using BackEnd.BackPack.Aplication.Exeptions;
+﻿using BackEnd.BackPack.Application.Exceptions;
 using System.Net;
 using System.Text.Json;
 

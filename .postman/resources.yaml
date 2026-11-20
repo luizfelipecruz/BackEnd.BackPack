@@ -1,7 +1,0 @@
-# Use this workspace to collaborate
-workspace:
-  id: 8982a9bb-a71e-42ac-8b80-008ae6e9c512
-
-localResources:
-  specs:
-    - ../BackEnd.BackPack.API/obj/Debug/net10.0/EndpointInfo/BackEnd.BackPack.API.json

@@ -1,4 +1,4 @@
-﻿using BackEnd.BackPack.Domain.Enuns;
+﻿using BackEnd.BackPack.Domain.Enums;
 
 namespace BackEnd.BackPack.Domain.Entidades;
 

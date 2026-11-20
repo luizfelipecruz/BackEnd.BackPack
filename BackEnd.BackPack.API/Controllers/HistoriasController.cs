@@ -1,5 +1,5 @@
-﻿using BackEnd.BackPack.Aplication.Commands.Historias.Adicionar_membros;
-using BackEnd.BackPack.Aplication.Commands.Historias.Criar_Historia;
+﻿using BackEnd.BackPack.Application.Commands.Historias.Adicionar_membros;
+using BackEnd.BackPack.Application.Commands.Historias.Criar_Historia;
 using BackEnd.BackPack.Domain.Extensions;
 using MediatR.Interfaces;
 using Microsoft.AspNetCore.Authorization;

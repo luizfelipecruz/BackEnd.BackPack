@@ -1,4 +1,4 @@
-﻿namespace BackEnd.BackPack.Domain.Enuns;
+﻿namespace BackEnd.BackPack.Domain.Enums;
 
 // <summary>
 // Enumeração para os tipos de itens

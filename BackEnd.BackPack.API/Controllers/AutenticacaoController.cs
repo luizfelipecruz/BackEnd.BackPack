@@ -1,7 +1,7 @@
-﻿using BackEnd.BackPack.Aplication.Commands.Authorize.Login;
-using BackEnd.BackPack.Aplication.Commands.Authorize.Obter_Status;
-using BackEnd.BackPack.Aplication.Commands.Authorize.Vincular;
-using BackEnd.BackPack.Aplication.Extesnions;
+﻿using BackEnd.BackPack.Application.Commands.Authorize.Login;
+using BackEnd.BackPack.Application.Commands.Authorize.Obter_Status;
+using BackEnd.BackPack.Application.Commands.Authorize.Vincular;
+using BackEnd.BackPack.Application.Extensions;
 using BackEnd.BackPack.Domain.Extensions;
 using MediatR.Interfaces;
 using Microsoft.AspNetCore.Authorization;

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace BackEnd.BackPack.Domain.Enuns;
+namespace BackEnd.BackPack.Domain.Enums;
 
 public enum EnumRole
 {

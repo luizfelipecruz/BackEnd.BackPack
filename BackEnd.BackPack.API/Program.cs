@@ -1,8 +1,8 @@
 using BackEnd.BackPack.API.Middlewares;
-using BackEnd.BackPack.Aplication.DI;
-using BackEnd.BackPack.Infraestruture.DI;
-using BackEnd.BackPack.Infraestruture.Extensions;
-using BackEnd.BackPack.Infraestruture.Roles;
+using BackEnd.BackPack.Application.DI;
+using BackEnd.BackPack.Infrastructure.DI;
+using BackEnd.BackPack.Infrastructure.Extensions;
+using BackEnd.BackPack.Infrastructure.Roles;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi;
 using System.Security.Claims;

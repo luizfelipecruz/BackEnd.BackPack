@@ -1,8 +1,8 @@
 <Solution>
   <Folder Name="/Base/">
-    <Project Path="BackEnd.BackPack.Aplication/BackEnd.BackPack.Aplication.csproj" />
+    <Project Path="BackEnd.BackPack.Application/BackEnd.BackPack.Application.csproj" />
     <Project Path="BackEnd.BackPack.Domain/BackEnd.BackPack.Domain.csproj" />
-    <Project Path="BackEnd.BackPack.Infraestruture/BackEnd.BackPack.Infraestruture.csproj" />
+    <Project Path="BackEnd.BackPack.Infrastructure/BackEnd.BackPack.Infrastructure.csproj" />
   </Folder>
   <Folder Name="/Mediator/">
     <Project Path="Mediator/Mediator.csproj" Id="b93dac6e-8e25-467a-b515-183c1780c04a" />
@@ -13,4 +13,5 @@
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
   </Folder>
+  <Project Path="BackEnd.BackPack.Web/BackEnd.BackPack.Web.csproj" Id="6c1696f3-7656-46c1-8ac5-044cce88f715" />
 </Solution>

@@ -1,5 +1,5 @@
-﻿using BackEnd.BackPack.Aplication.Commands.Usuarios.AtualizarUsuario;
-using BackEnd.BackPack.Aplication.Commands.Usuarios.CriarUsuario;
+﻿using BackEnd.BackPack.Application.Commands.Usuarios.AtualizarUsuario;
+using BackEnd.BackPack.Application.Commands.Usuarios.CriarUsuario;
 using BackEnd.BackPack.Domain.Extensions;
 using MediatR.Interfaces;
 using Microsoft.AspNetCore.Authorization;

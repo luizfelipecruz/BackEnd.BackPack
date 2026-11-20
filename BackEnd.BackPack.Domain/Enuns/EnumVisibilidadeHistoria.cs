@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BackEnd.BackPack.Domain.Enuns;
+namespace BackEnd.BackPack.Domain.Enums;
 
 public enum EnumVisibilidadeHistoria
 {
